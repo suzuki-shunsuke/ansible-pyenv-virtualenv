@@ -1,0 +1,4 @@
+---
+# defaults file for pyenv-virtualenv
+pyenv_root: "{{ ansible_env.get('PYENV_ROOT', '{}/.pyenv'.format(ansible_env.HOME)) }}"
+pyenv_virtualenv_rc_path: NOT ADD

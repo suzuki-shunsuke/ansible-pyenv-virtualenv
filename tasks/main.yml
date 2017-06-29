@@ -1,0 +1,17 @@
+---
+# tasks file for pyenv-virtualenv
+# https://github.com/pyenv/pyenv-virtualenv#installing-as-a-pyenv-plugin
+- name: Create directories
+  file:
+    dest: "{{ pyenv_virtualenv_root | default(pyenv_root) }}/plugins"
+    state: directory
+- name: Clone pyenv-virtualenv repository
+  git:
+    repo: https://github.com/pyenv/pyenv-virtualenv
+    dest: "{{ pyenv_virtualenv_root | default(pyenv_root) }}/plugins/pyenv-virtualenv"
+- name: Add configurations to ~/.bashrc, ~/.profile, or ~/.zshrc or etc
+  lineinfile:
+    dest: "{{ pyenv_virtualenv_rc_path }}"
+    line: 'eval "$(pyenv virtualenv-init -)"'
+    create: yes
+  when: pyenv_virtualenv_rc_path != "NOT ADD"
