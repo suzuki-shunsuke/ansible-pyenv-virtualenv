@@ -1,14 +1,10 @@
 ---
 - hosts: all
   vars:
-    nonroot: "{{ (ansible_env.USER is undefined) | ternary(ansible_env.HOME != '/root', ansible_env.USER != 'root') }}"
-    os_families:
-      RedHat: RedHat
-      Debian: Debian
-      Darwin: Darwin
     pyenv_root: "{{ ansible_env.HOME }}/pyenv"
   roles:
-  - git
+  - role: geerlingguy.git
+    become: "{{ (ansible_env.USER is undefined) | ternary(ansible_env.HOME != '/root', ansible_env.USER != 'root') }}"
   - role: suzuki-shunsuke.pyenv
     pyenv_rc_path: "{{ ansible_env.HOME }}/.bashrc"
     pyenv_is_dependencies_installed: yes
