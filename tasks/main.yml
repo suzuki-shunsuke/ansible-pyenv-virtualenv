@@ -7,8 +7,10 @@
     state: directory
 - name: Clone pyenv-virtualenv repository
   git:
-    repo: https://github.com/pyenv/pyenv-virtualenv
+    repo: "{{ pyenv_virtualenv_repo }}"
     dest: "{{ pyenv_virtualenv_root | default(pyenv_root) }}/plugins/pyenv-virtualenv"
+    version: "{{ pyenv_virtualenv_version }}"
+    update: "{{ pyenv_virtualenv_update }}"
 - name: Add configurations to ~/.bashrc, ~/.profile, or ~/.zshrc or etc
   lineinfile:
     dest: "{{ pyenv_virtualenv_rc_path }}"
