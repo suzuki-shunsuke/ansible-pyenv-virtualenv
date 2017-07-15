@@ -38,6 +38,11 @@ Nothing.
     pyenv_virtualenv_version: v1.1.0
 ```
 
+## See also
+
+* [suzuki-shunsuke.pyenv](https://github.com/suzuki-shunsuke/ansible-pyenv): ansible role to install pyenv
+* [suzuki-shunsuke.pyenv-module](https://github.com/suzuki-shunsuke/ansible-pyenv-module): ansible module to run `pyenv` command
+
 ## License
 
 [MIT](LICENSE)
